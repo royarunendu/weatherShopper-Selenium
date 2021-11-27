@@ -5,6 +5,7 @@ import core.BrowserDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,7 +13,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class CheckoutPage {
+public class CheckoutPage extends Browser{
+
+    //WebDriverWait wait;
+    public CheckoutPage(WebDriver driver){
+        super(driver);
+        PageFactory.initElements(driver, this);
+//        wait = new WebDriverWait(driver, 30);
+    }
+
 
     By checkoutHeading = By.xpath("//h2[text()='Checkout']");
     By payWithCard = By.xpath("//button/span[text()='Pay with Card']");
@@ -27,42 +36,42 @@ public class CheckoutPage {
     By zipCode = By.xpath("//input[@id='billing-zip']");
 
     public List<WebElement> getItemNames(){
-        return BrowserDriver.driver.findElements(itemName);
+        return driver.findElements(itemName);
     }
     public List<WebElement> getItemPrices(){
-        return BrowserDriver.driver.findElements(itemPrice);
+        return driver.findElements(itemPrice);
     }
 
     public WebElement getTotalPrice(){
-        return BrowserDriver.driver.findElement(totalPrice);
+        return driver.findElement(totalPrice);
     }
 
     public WebElement getPayWithCardButton(){
-        return BrowserDriver.driver.findElement(payWithCard);
+        return driver.findElement(payWithCard);
     }
 
     public void enterCardDetailsAndPay(String EmailId,  String CardNUmber, String ExpiryDate, String CVV) throws InterruptedException {
 
-        int frameSize = BrowserDriver.driver.findElements(By.tagName("iframe")).size();
+        int frameSize = driver.findElements(By.tagName("iframe")).size();
         for(int i=0;i<frameSize;i++){
-            BrowserDriver.driver.switchTo().frame(i);
-            Thread.sleep(5000);
-            if(BrowserDriver.driver.findElement(By.xpath("//h1[text()='Stripe.com']")).isDisplayed()){
-                BrowserDriver.driver.findElement(emailId).sendKeys(EmailId);
+            driver.switchTo().frame(i);
+            Thread.sleep(3000);
+            if(driver.findElement(By.xpath("//h1[text()='Stripe.com']")).isDisplayed()){
+                driver.findElement(emailId).sendKeys(EmailId);
                 for(char ch : CardNUmber.toCharArray()) {
-                    BrowserDriver.driver.findElement(cardNumber).sendKeys(String.valueOf(ch));
+                    driver.findElement(cardNumber).sendKeys(String.valueOf(ch));
                 }
                 Thread.sleep(1000);
                 for(char ch : ExpiryDate.toCharArray()) {
-                    BrowserDriver.driver.findElement(expiryDate).sendKeys(String.valueOf(ch));
+                    driver.findElement(expiryDate).sendKeys(String.valueOf(ch));
                 }
-                BrowserDriver.driver.findElement(cvv).sendKeys(CVV);
-                if(BrowserDriver.driver.findElement(zipCode).isDisplayed()){
-                    BrowserDriver.driver.findElement(zipCode).click();
-                    BrowserDriver.driver.findElement(zipCode).sendKeys("111111");
+                driver.findElement(cvv).sendKeys(CVV);
+                if(driver.findElement(zipCode).isDisplayed()){
+                    driver.findElement(zipCode).click();
+                    driver.findElement(zipCode).sendKeys("111111");
                 }
-                BrowserDriver.driver.findElement(payButton).click();
-                BrowserDriver.driver.switchTo().parentFrame();
+                driver.findElement(payButton).click();
+                driver.switchTo().parentFrame();
                 break;
             }
         }

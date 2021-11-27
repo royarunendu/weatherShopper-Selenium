@@ -9,4 +9,10 @@
 <!--            <class name="TestScenario2"/>-->
         </classes>
     </test>
+<!--    <test name="Run test on firefox" preserve-order="true">-->
+<!--        <parameter name="browserName" value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="TestScenario1"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

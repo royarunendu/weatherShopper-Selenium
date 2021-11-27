@@ -6,7 +6,7 @@ import org.testng.ITestResult;
 public class RetryAnalyzer implements IRetryAnalyzer {
 
     int counter = 0;
-    int retryLimit = 5;
+    int retryLimit = 0;
 
     @Override
     public boolean retry(ITestResult iTestResult) {
@@ -14,7 +14,6 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         {
             System.out.println("Starting retry..."+counter);
             System.out.println("Reloading the page...");
-            BrowserDriver.driver.navigate().refresh();
             counter++;
             return true;
         }

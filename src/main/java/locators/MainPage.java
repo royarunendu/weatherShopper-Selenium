@@ -1,25 +1,33 @@
 package locators;
 
+import core.Browser;
 import core.BrowserDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
+public class MainPage extends Browser {
+
+    public MainPage(WebDriver driver){
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     By currentTemperature = By.xpath("//span[@id='temperature']");
     By buyMoisturizers = By.xpath("//button[text()='Buy moisturizers']");
     By buySunscreens = By.xpath("//button[text()='Buy sunscreens']");
 
     public WebElement getCurrentTemperature(){
-        return BrowserDriver.driver.findElement(currentTemperature);
+        return driver.findElement(currentTemperature);
     }
 
     public WebElement getMoisturizersButton(){
-        return BrowserDriver.driver.findElement(buyMoisturizers);
+        return driver.findElement(buyMoisturizers);
     }
 
     public WebElement getSunscreensButton(){
-        return BrowserDriver.driver.findElement(buySunscreens);
+        return driver.findElement(buySunscreens);
     }
 
 }

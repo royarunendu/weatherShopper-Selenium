@@ -5,9 +5,11 @@ import locators.CheckoutPage;
 import locators.ConfirmationPage;
 import locators.MainPage;
 import locators.ProductPage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.io.IOException;
@@ -17,14 +19,14 @@ import java.util.List;
 
 public class TestScenario2 {
 
+    WebDriver driver;
     HashMap<String, Integer> cartMap = new HashMap<>();
-    Browser browser = new Browser();
+    Browser browser = new Browser(driver);
     ConfigReader configReader = new ConfigReader();
-    MainPage mainPage = new MainPage();
-    ProductPage productPage = new ProductPage();
-    CheckoutPage checkoutPage = new CheckoutPage();
-    ConfirmationPage confirmationPage = new ConfirmationPage();
-
+    MainPage mainPage;
+    ProductPage productPage;
+    CheckoutPage checkoutPage;
+    ConfirmationPage confirmationPage;
 
     String toBuy = null;
 
@@ -32,14 +34,24 @@ public class TestScenario2 {
     @Parameters({"browserName","testEnv"})
     public void launchApplication(String browserName, String testEnv) {
         try {
-            browser.launchWebsite(browserName,testEnv);
+            driver = browser.launchBrowser(browserName);
+            driver.navigate().to(configReader.readProperties(testEnv.toUpperCase()));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @BeforeTest
+    public void intialize(){
+        mainPage = new MainPage(driver);
+        productPage = new ProductPage(driver);
+        checkoutPage = new CheckoutPage(driver);
+        confirmationPage = new ConfirmationPage(driver);
+    }
+
     @Test(priority=1)
     public void test1_selectProductBasedOnTemperature(){
+
 
         String currentTempVal= mainPage.getCurrentTemperature().getText().split(" ")[0];
         int temperatureValue = Integer.parseInt(currentTempVal);
@@ -123,13 +135,14 @@ public class TestScenario2 {
 
         if(!confirmationPage.getConfirmationHeader().isDisplayed()){
             System.out.println("PAYMENT FAILED");
-            BrowserDriver.driver.navigate().back();
+            driver.navigate().back();
             Assert.assertEquals("PAYMENT SCUCCESS","PAYMENT FAILED","Payment Failed.... rety");
         }
     }
 
     public int getIndexOfLeastPricedProduct(String productName){
 
+        ProductPage productPage = new ProductPage(driver);
         int leastPrice = Integer.MAX_VALUE;
         int selectProductIndex = -1;
         List<WebElement> productNames = productPage.getProductNames();
@@ -153,4 +166,3 @@ public class TestScenario2 {
         }
     }
 }
-

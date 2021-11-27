@@ -1,13 +1,20 @@
 package locators;
 
+import core.Browser;
 import core.BrowserDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ProductPage {
+public class ProductPage extends Browser {
+
+    public ProductPage(WebDriver driver){
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
 
     By pageHeading = By.xpath("//body/div[@class='container']/div/h2");
@@ -17,22 +24,22 @@ public class ProductPage {
     By cart = By.xpath("//button[@onclick='goToCart()']/span");
 
     public WebElement getParentProduct(){
-        return BrowserDriver.driver.findElement(pageHeading);
+        return driver.findElement(pageHeading);
     }
     public List<WebElement> getProductNames(){
-        return BrowserDriver.driver.findElements(productNames);
+        return driver.findElements(productNames);
     }
 
     public List<WebElement> getproductPrices(){
-        return BrowserDriver.driver.findElements(productPrices);
+        return driver.findElements(productPrices);
     }
 
     public List<WebElement> getAddButton(){
-        return BrowserDriver.driver.findElements(add);
+        return driver.findElements(add);
     }
 
     public WebElement cartButton(){
-        return BrowserDriver.driver.findElement(cart);
+        return driver.findElement(cart);
     }
 
 }
