@@ -16,8 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /*
-
-*
+    After the application is launched, the selection of product done is based on temperature displayed and based on that "toBuy" value is set
+    Now we need to select two products based on some substring value and price, in this case the price should be least for both the products
+    and add to cart. Then verify that cart value is correct and make payment. A retry mechanism is implemented at this stage which is based on
+    String matching "PAYMENT SUCCESS", if the string does not matches, the test case is explicitly failed but before doing that user is navigated
+    back to previous page to cart details page and re-enter card details.
 * */
 
 public class TestScenario1 {
