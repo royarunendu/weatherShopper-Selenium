@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Test Suite" duration-ms="27060" started-at="2021-11-27T13:35:14 IST" finished-at="2021-11-27T13:35:41 IST">
+    <groups>
+    </groups>
+    <test name="Run test on chrome" duration-ms="27060" started-at="2021-11-27T13:35:14 IST" finished-at="2021-11-27T13:35:41 IST">
+      <class name="TestScenario1">
+        <test-method status="PASS" signature="launchApplication(java.lang.String,java.lang.String)[pri:0, instance:TestScenario1@2ac273d3]" name="launchApplication" is-config="true" duration-ms="7645" started-at="2021-11-27T13:35:14 IST" finished-at="2021-11-27T13:35:22 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[PROD]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method status="PASS" signature="test1_selectProductBasedOnTemperature()[pri:1, instance:TestScenario1@2ac273d3]" name="test1_selectProductBasedOnTemperature" duration-ms="2079" started-at="2021-11-27T13:35:22 IST" finished-at="2021-11-27T13:35:24 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1_selectProductBasedOnTemperature -->
+        <test-method status="PASS" signature="test2_addProductsToCart()[pri:2, instance:TestScenario1@2ac273d3]" name="test2_addProductsToCart" duration-ms="6373" started-at="2021-11-27T13:35:24 IST" finished-at="2021-11-27T13:35:30 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2_addProductsToCart -->
+        <test-method status="PASS" signature="test3_proceedWithCheckoutAndMakePayment()[pri:3, instance:TestScenario1@2ac273d3]" name="test3_proceedWithCheckoutAndMakePayment" duration-ms="10933" started-at="2021-11-27T13:35:30 IST" finished-at="2021-11-27T13:35:41 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3_proceedWithCheckoutAndMakePayment -->
+      </class> <!-- TestScenario1 -->
+    </test> <!-- Run test on chrome -->
+  </suite> <!-- Test Suite -->
+</testng-results>

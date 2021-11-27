@@ -13,7 +13,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Browser {
 
-    ConfigReader configReader = new ConfigReader();
+    public Browser(String browserName){
+        launchBrowser(browserName);
+    }
+
 
     public void launchBrowser(String browserName){
 
@@ -35,10 +38,10 @@ public class Browser {
         BrowserDriver.driver.manage().window().maximize();
     }
 
-    public void launchWebsite(String browserName, String environment) throws IOException {
-        launchBrowser(browserName);
-        System.out.println(environment);
-        String portalURL = configReader.readProperties(environment.toUpperCase());
-        BrowserDriver.driver.navigate().to(portalURL);
-    }
+//    public void launchWebsite(String browserName, String environment) throws IOException {
+//        launchBrowser(browserName);
+//        System.out.println(environment);
+//        String portalURL = configReader.readProperties(environment.toUpperCase());
+//        BrowserDriver.driver.navigate().to(portalURL);
+//    }
 }

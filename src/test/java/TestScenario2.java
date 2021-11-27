@@ -1,6 +1,7 @@
 import core.Browser;
 import core.BrowserDriver;
 import core.ConfigReader;
+import core.LaunchWebsite;
 import locators.CheckoutPage;
 import locators.ConfirmationPage;
 import locators.MainPage;
@@ -18,7 +19,7 @@ import java.util.List;
 public class TestScenario2 {
 
     HashMap<String, Integer> cartMap = new HashMap<>();
-    Browser browser = new Browser();
+    LaunchWebsite launchWebsite;
     ConfigReader configReader = new ConfigReader();
     MainPage mainPage = new MainPage();
     ProductPage productPage = new ProductPage();
@@ -31,11 +32,7 @@ public class TestScenario2 {
     @BeforeClass
     @Parameters({"browserName","testEnv"})
     public void launchApplication(String browserName, String testEnv) {
-        try {
-            browser.launchWebsite(browserName,testEnv);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new LaunchWebsite(browserName,testEnv);
     }
 
     @Test(priority=1)
