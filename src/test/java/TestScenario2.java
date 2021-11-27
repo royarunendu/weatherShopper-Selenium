@@ -1,5 +1,4 @@
 import core.Browser;
-import core.BrowserDriver;
 import core.ConfigReader;
 import locators.CheckoutPage;
 import locators.ConfirmationPage;

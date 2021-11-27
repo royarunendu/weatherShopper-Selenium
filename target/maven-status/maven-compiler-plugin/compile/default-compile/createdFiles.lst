@@ -1,7 +1,6 @@
 locators/CheckoutPage.class
 core/RetryAnalyzer.class
 utils/getOSInformation.class
-core/BrowserDriver.class
 core/ConfigReader.class
 locators/ConfirmationPage.class
 locators/MainPage.class

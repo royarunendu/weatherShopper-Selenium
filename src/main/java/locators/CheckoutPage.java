@@ -1,25 +1,20 @@
 package locators;
 
 import core.Browser;
-import core.BrowserDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class CheckoutPage extends Browser{
 
-    //WebDriverWait wait;
+
     public CheckoutPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
-//        wait = new WebDriverWait(driver, 30);
+
     }
 
 

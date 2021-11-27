@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="Failed suite [Test Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <parameter name="testEnv" value="PROD"/>
+  <test thread-count="1" parallel="tests" name="Run test on firefox(failed)" verbose="0">
+    <parameter name="browserName" value="firefox"/>
+    <classes>
+      <class name="TestScenario2">
+        <methods>
+          <include name="intialize"/>
+          <include name="test3_proceedWithCheckoutAndMakePayment"/>
+          <include name="launchApplication"/>
+        </methods>
+      </class> <!-- TestScenario2 -->
+    </classes>
+  </test> <!-- Run test on firefox(failed) -->
+</suite> <!-- Failed suite [Test Suite] -->
