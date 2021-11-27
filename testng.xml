@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite" parallel="classes" thread-count="1">
+    <parameter name="testEnv" value="PROD"/>
+    <test name="Run test on chrome" >
+        <parameter name="browserName" value="chrome"/>
+        <classes>
+            <class name="TestScenario1"/>
+<!--            <class name="TestScenario2"/>-->
+        </classes>
+    </test>
+</suite>
