@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test Suite" parallel="classes" thread-count="1">
-    <parameter name="testEnv" value="PROD"/>
+<suite name="Test Suite" parallel="tests" thread-count="1" group-by-instances="true">
+    <parameter name="testEnv" value="${testEnv}"/>
     <test name="Run test on chrome" >
         <parameter name="browserName" value="chrome"/>
         <classes>
             <class name="TestScenario1"/>
-<!--            <class name="TestScenario2"/>-->
         </classes>
     </test>
-<!--    <test name="Run test on firefox" preserve-order="true">-->
-<!--        <parameter name="browserName" value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="TestScenario1"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Run test on firefox" >
+        <parameter name="browserName" value="firefox"/>
+        <classes>
+            <class name="TestScenario2"/>
+        </classes>
+    </test>
 </suite>

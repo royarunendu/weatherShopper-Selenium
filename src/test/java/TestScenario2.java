@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+//Duplicate of TestSceanrio1
 
 public class TestScenario2 {
 
