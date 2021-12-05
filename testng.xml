@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test Suite" parallel="tests" thread-count="1" group-by-instances="true">
-    <parameter name="testEnv" value="${testEnv}"/>
+<suite name="Test Suite" parallel="tests">
+    <parameter name="testEnv" value="prod"/>
     <test name="Run test on chrome" >
         <parameter name="browserName" value="chrome"/>
         <classes>

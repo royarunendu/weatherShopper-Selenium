@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [Test Suite]" parallel="classes">
-  <parameter name="testEnv" value="PROD"/>
-  <test thread-count="2" name="Run test on chrome(failed)" parallel="classes">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Test Suite]" parallel="tests">
+  <parameter name="testEnv" value="prod"/>
+  <test thread-count="5" name="Run test on chrome(failed)" parallel="tests">
     <parameter name="browserName" value="chrome"/>
     <classes>
       <class name="TestScenario1">
         <methods>
           <include name="launchApplication"/>
-          <include name="test1_selectProductBasedOnTemperature"/>
           <include name="test3_proceedWithCheckoutAndMakePayment"/>
-          <include name="test2_addProductsToCart"/>
+          <include name="closeBrowser"/>
         </methods>
       </class> <!-- TestScenario1 -->
-      <class name="TestScenario2">
-        <methods>
-          <include name="test3_proceedWithCheckoutAndMakePayment"/>
-          <include name="launchApplication"/>
-        </methods>
-      </class> <!-- TestScenario2 -->
     </classes>
   </test> <!-- Run test on chrome(failed) -->
 </suite> <!-- Failed suite [Test Suite] -->

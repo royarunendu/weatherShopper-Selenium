@@ -4,15 +4,14 @@ import core.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class ProductPage extends Browser {
 
+    WebDriver driver;
     public ProductPage(WebDriver driver){
-        super(driver);
-        PageFactory.initElements(driver, this);
+        this.driver=driver;
     }
 
 

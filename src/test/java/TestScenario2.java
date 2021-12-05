@@ -7,10 +7,8 @@ import locators.ProductPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +19,7 @@ public class TestScenario2 {
 
     WebDriver driver;
     HashMap<String, Integer> cartMap = new HashMap<>();
-    Browser browser = new Browser(driver);
+    Browser browser = new Browser();
     ConfigReader configReader = new ConfigReader();
     MainPage mainPage;
     ProductPage productPage;
@@ -36,12 +34,13 @@ public class TestScenario2 {
         try {
             driver = browser.launchBrowser(browserName);
             driver.navigate().to(configReader.readProperties(testEnv.toUpperCase()));
+            intialize();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @BeforeTest
+    //@BeforeTest
     public void intialize(){
         mainPage = new MainPage(driver);
         productPage = new ProductPage(driver);
@@ -164,5 +163,10 @@ public class TestScenario2 {
             System.out.println("No product found matching : "+productName);
             return -1;
         }
+    }
+
+    @AfterTest
+    public void closeBrowser(){
+        driver.quit();
     }
 }

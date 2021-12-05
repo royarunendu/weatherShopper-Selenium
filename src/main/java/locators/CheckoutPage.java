@@ -4,17 +4,14 @@ import core.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class CheckoutPage extends Browser{
 
-
+    WebDriver driver;
     public CheckoutPage(WebDriver driver){
-        super(driver);
-        PageFactory.initElements(driver, this);
-
+        this.driver=driver;
     }
 
 
